@@ -1,0 +1,39 @@
+
+CorestratAI Brand Watcher - Cron Job 
+Examples 
+Add these to your crontab with: crontab -e 
+Run brand discovery every Monday at 7:00 
+AM 
+0 7 * * 1 /usr/bin/python3 /path/to/brand_watcher_app/discovery/dynamic_discovery.py >> 
+/var/log/brand_discovery.log 2>&1 
+Alternative: Run brand discovery every 
+Sunday at 11:00 PM 
+0 23 * * 0 /usr/bin/python3 /path/to/brand_watcher_app/discovery/dynamic_discovery.py >> 
+/var/log/brand_discovery.log 2>&1 
+Run brand discovery twice a week (Monday 
+and Thursday at 8:00 AM) 
+0 8 * * 1,4 /usr/bin/python3 /path/to/brand_watcher_app/discovery/dynamic_discovery.py >> 
+/var/log/brand_discovery.log 2>&1 
+Daily brand discovery at 6:00 AM (for high-
+frequency monitoring) 
+0 6 * * * /usr/bin/python3 /path/to/brand_watcher_app/discovery/dynamic_discovery.py >> 
+/var/log/brand_discovery.log 2>&1 
+Example with virtual environment activation 
+ 
+0 7 * * 1 cd /path/to/brand_watcher_app && /path/to/venv/bin/python 
+discovery/dynamic_discovery.py >> /var/log/brand_discovery.log 2>&1 
+Example with environment variables loaded 
+0 7 * * 1 cd /path/to/brand_watcher_app && /usr/bin/env $(cat .env | xargs) /usr/bin/python3 
+discovery/dynamic_discovery.py >> /var/log/brand_discovery.log 2>&1 
+Notes: 
+- Replace /path/to/brand_watcher_app with 
+your actual project path 
+- Replace /usr/bin/python3 with your Python 
+path (find with: which python3) 
+- Ensure the script has execute permissions: 
+chmod +x discovery/dynamic_discovery.py 
+- Test the script manually before adding to 
+cron 
+- Monitor the log files for errors: tail -f 
+/var/log/brand_discovery.log 
+writer.editor.GO_TO_TOPwriter.editor.GO_TO_BOTTOM
